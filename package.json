@@ -1,0 +1,19 @@
+{
+  "name": "teliernews",
+  "version": "1.0.0",
+  "description": "Modern news platform with black and white design inspired by Bloomberg and Forbes",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "news",
+    "cms",
+    "firebase",
+    "minimal",
+    "blog"
+  ],
+  "author": "TelierLabs",
+  "license": "MIT"
+}
