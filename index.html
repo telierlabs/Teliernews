@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TelierNews - Berita Terkini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">TELIER<span>NEWS</span></a>
+            </div>
+            <div class="nav-center">
+                <a href="#" class="nav-link active">Beranda</a>
+                <a href="#" class="nav-link">Politik</a>
+                <a href="#" class="nav-link">Ekonomi</a>
+                <a href="#" class="nav-link">Teknologi</a>
+                <a href="#" class="nav-link">Olahraga</a>
+                <a href="#" class="nav-link">Internasional</a>
+            </div>
+            <div class="nav-right">
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <a href="admin.html" class="admin-btn">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Cari berita..." id="searchInput">
+            <button class="search-close" id="searchClose">×</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content" id="heroContent">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="latest-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Berita Terkini</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="news-grid" id="latestNews">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="category-tabs" id="categoryTabs">
+                <button class="category-tab active" data-category="all">Semua</button>
+                <button class="category-tab" data-category="politik">Politik</button>
+                <button class="category-tab" data-category="ekonomi">Ekonomi</button>
+                <button class="category-tab" data-category="teknologi">Teknologi</button>
+                <button class="category-tab" data-category="olahraga">Olahraga</button>
+                <button class="category-tab" data-category="internasional">Internasional</button>
+            </div>
+            <div class="news-list" id="categoryNews">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 class="footer-title">TELIER<span>NEWS</span></h3>
+                    <p class="footer-desc">Platform berita terpercaya untuk informasi terkini dan mendalam.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Kategori</h4>
+                    <a href="#" class="footer-link">Politik</a>
+                    <a href="#" class="footer-link">Ekonomi</a>
+                    <a href="#" class="footer-link">Teknologi</a>
+                    <a href="#" class="footer-link">Olahraga</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Perusahaan</h4>
+                    <a href="#" class="footer-link">Tentang Kami</a>
+                    <a href="#" class="footer-link">Kontak</a>
+                    <a href="#" class="footer-link">Iklan</a>
+                    <a href="#" class="footer-link">Karir</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Legal</h4>
+                    <a href="#" class="footer-link">Kebijakan Privasi</a>
+                    <a href="#" class="footer-link">Syarat & Ketentuan</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TelierNews. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Article Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <article class="article-detail" id="articleDetail">
+                <!-- Will be populated by JavaScript -->
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
