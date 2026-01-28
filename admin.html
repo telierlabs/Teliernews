@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TelierNews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-logo">TELIER<span>NEWS</span></h1>
+                <p class="sidebar-subtitle">Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item" data-view="articles">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Artikel
+                </a>
+                <a href="#" class="nav-item" data-view="new-article">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Artikel Baru
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Kembali ke Website
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <div class="view active" id="dashboard-view">
+                <div class="content-header">
+                    <h2 class="content-title">Dashboard</h2>
+                    <p class="content-subtitle">Ringkasan konten dan statistik</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-label">Total Artikel</p>
+                            <h3 class="stat-value" id="totalArticles">0</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-label">Penulis</p>
+                            <h3 class="stat-value">1</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-label">Artikel Hari Ini</p>
+                            <h3 class="stat-value" id="todayArticles">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-articles">
+                    <h3 class="section-title">Artikel Terbaru</h3>
+                    <div class="articles-table" id="dashboardArticles">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles View -->
+            <div class="view" id="articles-view">
+                <div class="content-header">
+                    <h2 class="content-title">Semua Artikel</h2>
+                    <button class="btn-primary" onclick="switchView('new-article')">+ Artikel Baru</button>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="all">Semua Kategori</option>
+                            <option value="politik">Politik</option>
+                            <option value="ekonomi">Ekonomi</option>
+                            <option value="teknologi">Teknologi</option>
+                            <option value="olahraga">Olahraga</option>
+                            <option value="internasional">Internasional</option>
+                        </select>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="Cari artikel..." id="articleSearch">
+                    </div>
+                </div>
+
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- New Article View -->
+            <div class="view" id="new-article-view">
+                <div class="content-header">
+                    <h2 class="content-title">Buat Artikel Baru</h2>
+                    <p class="content-subtitle">Isi form di bawah untuk membuat artikel</p>
+                </div>
+
+                <form class="article-form" id="articleForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Judul Artikel *</label>
+                            <input type="text" class="form-input" id="articleTitle" placeholder="Masukkan judul artikel..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Kategori *</label>
+                            <select class="form-input" id="articleCategory" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="Politik">Politik</option>
+                                <option value="Ekonomi">Ekonomi</option>
+                                <option value="Teknologi">Teknologi</option>
+                                <option value="Olahraga">Olahraga</option>
+                                <option value="Internasional">Internasional</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Penulis *</label>
+                            <input type="text" class="form-input" id="articleAuthor" value="Admin" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">URL Gambar *</label>
+                            <input type="url" class="form-input" id="articleImage" placeholder="https://example.com/image.jpg" required>
+                            <p class="form-hint">Gunakan URL gambar dari Unsplash atau sumber lain</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Ringkasan (Excerpt) *</label>
+                            <textarea class="form-textarea" id="articleExcerpt" rows="3" placeholder="Tulis ringkasan singkat artikel..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Konten Artikel *</label>
+                            <textarea class="form-textarea large" id="articleContent" rows="15" placeholder="Tulis konten lengkap artikel di sini..." required></textarea>
+                            <p class="form-hint">Pisahkan paragraf dengan enter. Format akan otomatis diterapkan.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" id="articleFeatured">
+                                <span>Tampilkan sebagai artikel unggulan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="switchView('dashboard')">Batal</button>
+                        <button type="submit" class="btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Publikasikan Artikel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastMessage">Artikel berhasil dipublikasikan!</span>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <h3 class="modal-title">Hapus Artikel?</h3>
+            <p class="modal-text">Artikel yang dihapus tidak dapat dikembalikan. Apakah Anda yakin?</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeDeleteModal()">Batal</button>
+                <button class="btn-danger" id="confirmDelete">Hapus Artikel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
